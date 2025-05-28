@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+
 import { validatePipeline } from '../scripts/validation'
 import styles from './logincomponent.module.css'
+import { useAuth } from './use-auth';
+import { useState } from 'react';
 
 
 
@@ -11,36 +13,44 @@ const LoginComponent = () => {
  const [formError, setFormError] = useState()
 
 
- async function handleSubmit(event){
-  event.preventDefault();
-  if(errors.length == 0 && formData.mail && formData.password){ 
-            try {
-                const response = await fetch('http://localhost:5173/login', {
-                    method: "POST", 
-                    credentials: "same-origin", // include, *same-origin, omit
-                    headers: {
-                    "Content-Type": "application/json",
-                 
-                    },
-                    redirect: "follow", // manual, *follow, error
-                    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                    body: JSON.stringify(formData), // body data type must match "Content-Type" header
-                });
-               
-                await response.json();
-                
-              
-               
-            }
-            catch (err) {
-              
-                return new Error(err)
-            }
 
-  }else {
-    setFormError("Form must not include errors or empty fields.Recheck form")
-  }
- }
+const auth = useAuth();
+ async function handleSubmit(event) {
+     event.preventDefault()
+
+     await auth.loginAction(formData)
+
+  
+ 
+}
+
+
+
+
+// async function handleSubmit(event) {
+
+//    event.preventDefault();   
+//     try {
+//         const response = await fetch('http://localhost:3000/auth/login', {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json",
+//             },
+//             body: JSON.stringify(formData),
+//         });
+
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! status: ${response.status}`);
+//         }
+//         const result = await response.json()
+//         console.log("Success:", result);
+//         // Handle successful response here (e.g., redirect, show message)
+        
+//     } catch (err) {
+//         new Error("Error:", err);
+//         // Handle error (show error message to user)
+//     }
+// }
 
   const handleChange = (event) => {
     const { name, value } = event.target;

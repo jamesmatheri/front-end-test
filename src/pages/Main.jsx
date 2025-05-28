@@ -7,7 +7,7 @@ const Main = () => {
   return (
   <>
 
-    <RegisterComponent/>
+   <div>Main page</div>
   
   </>
   )

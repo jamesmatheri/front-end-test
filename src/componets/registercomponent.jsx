@@ -14,35 +14,30 @@ const RegisterComponent = () => {
 
    const [formError, setFormError] = useState()
 
-   async function handleSubmit(event){
-    event.preventDefault();
-    if(formError.length === 0 && formData.mail && formData.password){ 
-              try {
-                  const response = await fetch('http://localhost:3000/register', {
-                      method: "POST", 
-                      credentials: "same-origin", // include, *same-origin, omit
-                      headers: {
-                      "Content-Type": "application/json",
-                   
-                      },
-                  
-                      body: JSON.stringify(formData), // body data type must match "Content-Type" header
-                  });
-                 
-                  await response.json();
-                  
-                
-                 
-              }
-              catch (err) {
-                
-                  return new Error(err)
-              }
-  
-    }else {
-      setFormError("Form must not include errors or empty fields.Recheck form")
+async function handleSubmit(event) {
+
+   event.preventDefault();   
+    try {
+        const response = await fetch('http://localhost:3000/auth/register', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json()
+        console.log("Success:", result);
+        // Handle successful response here (e.g., redirect, show message)
+        
+    } catch (err) {
+        new Error("Error:", err);
+        // Handle error (show error message to user)
     }
-   }
+}
   
     const handleChange = (event) => {
       const { name, value } = event.target;

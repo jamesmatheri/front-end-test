@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './authlayout.module.css';
-import Logincomponent from '../componets/logincomponent';
+import { Outlet } from 'react-router-dom';
 import '../App.css'
 
 
-const login = () => {
+const login = ({children}) => {
   return (
     <div className='container'>
         <div className={styles.innerContainer}>
@@ -47,7 +47,7 @@ const login = () => {
 
 
             <div className={styles.authContainer}>
-              <Logincomponent />
+              {children}
             </div>
           </div>
 

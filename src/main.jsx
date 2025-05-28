@@ -5,12 +5,19 @@ import './App.css'
 import Main from './pages/Main'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import AuthProvider from './componets/AuthenticationContext';
+import ProtectedRoute from './componets/ProtectedRoute';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: (
+
+      <ProtectedRoute>
+        <Main />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "login",
@@ -24,7 +31,11 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+  
+  <AuthProvider>
+       <RouterProvider router={router} />
+  </AuthProvider>
+
   </StrictMode>
 );
 
