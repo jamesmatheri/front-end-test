@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
 
   const loginAction = async (data) => {
     try {
-      const response = await fetch("http://localhost:3000/auth/login", {
+      const response = await fetch("https://back-end-test-n0ma.onrender.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

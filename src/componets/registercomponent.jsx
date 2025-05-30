@@ -18,7 +18,8 @@ async function handleSubmit(event) {
 
    event.preventDefault();   
     try {
-        const response = await fetch('http://localhost:3000/auth/register', {
+        const response = await fetch('https://back-end-test-n0ma.onrender.com/auth/register', {
+
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -29,13 +30,15 @@ async function handleSubmit(event) {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const result = await response.json()
-        console.log("Success:", result);
-        // Handle successful response here (e.g., redirect, show message)
+
+        
+           if(response.ok)  return window.location.href = "/login"
+       
         
     } catch (err) {
         new Error("Error:", err);
-        // Handle error (show error message to user)
+      
+
     }
 }
   
@@ -177,7 +180,9 @@ async function handleSubmit(event) {
 
         </form>
           <div style={{margin:"30px",width:"100%", height:"56px",display:"grid", placeItems:"center"}}>
-               <p>Already have an account? <span style={{color:"#00b4d8"}}><strong><Link >Login</Link></strong></span></p>
+
+               <p>Already have an account? <span style={{color:"#00b4d8"}}><strong><Link to="/login" >Login</Link></strong></span></p>
+
             </div>
      </div>
 

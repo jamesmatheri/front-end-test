@@ -1,0 +1,86 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.userContainer {
+    width: 100%;
+    height: 15vh;
+    background: purple;
+}
+
+.tableContainer{
+    width: 100%;
+    min-height: 30vh;
+    display: flex;
+    justify-content: center;
+
+  
+}
+
+.chartContainer{
+    width: 100%;
+    height: 65vh;
+    background: #dcdcdd;
+    display: flex;
+    justify-content: center;
+}
+
+.chart{
+    width: 60%;
+    height: 600px;
+    margin-top: 100px;
+   
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.editBtn {
+    width: 110px;
+    height: 42px;
+    background: orange;
+    color: black;
+    border: none;
+    border-radius: 8px;
+}
+
+.updateBtn {
+    width: 110px;
+    height: 42px;
+    background: #00bbf9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+.deleteBtn {
+     width: 110px;
+    height: 42px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: small;
+}
+
+.createBtn {
+   width: 110px;
+    height: 42px;
+    background: #38b000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
